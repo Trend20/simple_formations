@@ -2,10 +2,12 @@ import Label from "../components/shared/Label";
 import InputField from "../components/shared/InputField";
 import { useState } from "react";
 import Button from "../components/shared/Button";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   return (
     <div>
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -39,7 +41,14 @@ const Login = () => {
                 value={password}
               />
             </div>
-            <Button type={"submit"} classNames="w-full">
+            <Button
+              type={"submit"}
+              classNames="w-full"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/dashboard");
+              }}
+            >
               Sign in
             </Button>
             <p className="text-center text-sm text-gray-500 space-x-3">
