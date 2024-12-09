@@ -1,7 +1,5 @@
-const Profile = () =>{
-    return(
-        <div>Profile Page</div>
-    )
-}
+const Profile = () => {
+  return <div>Profile Page</div>;
+};
 
 export default Profile;
