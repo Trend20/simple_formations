@@ -1,7 +1,8 @@
-const Button = ({ children, onClick, classNames }) => {
+const Button = ({ children, onClick, classNames, type }) => {
   return (
     <div>
       <button
+        type={type}
         onClick={onClick}
         className={`${classNames} inline-block rounded border border-primary bg-primary px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500`}
       >
