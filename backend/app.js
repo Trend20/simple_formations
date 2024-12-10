@@ -4,6 +4,8 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+const memberRoutes = require('./routes/membersRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 const morgan = require('morgan');
 
 //app middleware
@@ -18,5 +20,7 @@ app.use(bodyParser.json());
 //consume routes
 // app.use(`${process.env.API_PREFIX}/auth`, authRoutes);
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/members', memberRoutes);
+app.use('/api/v1/dashboard', dashboardRoutes);
 
 module.exports = app;
