@@ -5,11 +5,18 @@ const { hashPassword, comparePassword } = require('../utils/hash');
 const prisma = new PrismaClient();
 
 const register = async (req, res) => {
-    const { username, password, roleId } = req.body;
+    const { username, email, password, roleId } = req.body;
+    const roleExists = await prisma.role.findUnique({
+        where: { id: roleId },
+    });
+
+    if (!roleExists) {
+        throw new Error('Invalid roleId. Role does not exist.');
+    }
     try {
         const hashedPassword = await hashPassword(password);
         const user = await prisma.user.create({
-            data: { username, password: hashedPassword, roleId },
+            data: { username, email, password: hashedPassword, roleId },
         });
         res.status(201).json(user);
     } catch (err) {
